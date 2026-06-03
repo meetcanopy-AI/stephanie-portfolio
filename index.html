@@ -7,39 +7,42 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Instrument+Sans:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', system-ui, sans-serif;
+        }
         
         body {
-            font-family: 'Instrument Sans', system_ui, sans-serif;
+            font-family: var(--font-sans);
         }
         
         .heading-serif {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-weight: 700;
+            font-family: var(--font-serif);
         }
 
         .section-header {
-            font-size: 0.75rem;
+            font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 500;
-            color: #8a7f6e;
         }
 
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.75rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
         .work-card {
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            border: 1px solid #f0ede6;
+            transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), 
+                       box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
         }
         
         .work-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px -10px rgb(0 0 0 / 0.06);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
         }
 
         .nav-link {
@@ -47,162 +50,163 @@
             transition: color 0.2s ease;
         }
         
-        .nav-link:hover {
-            color: #111;
-        }
-
-        .mood-img {
-            transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #111;
+            transition: width 0.2s ease;
         }
         
-        .mood-img:hover {
-            transform: scale(1.015);
+        .nav-link:hover:after {
+            width: 100%;
         }
 
-        .soft-shadow {
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.03), 0 4px 6px -4px rgb(0 0 0 / 0.03);
+        .subtle-border {
+            border-color: #f1f1f1;
         }
     </style>
 </head>
-<body class="bg-[#F9F6F0] text-[#2C2522] antialiased">
+<body class="bg-[#FAF9F6] text-[#111111] antialiased">
     <!-- Navigation -->
-    <nav class="border-b border-[#EDE6D9] bg-[#F9F6F0]/95 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-8 py-5 flex items-center justify-between">
+    <nav class="border-b border-[#EAEAEA] bg-[#FAF9F6]/95 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-8 py-6 flex items-center justify-between">
             <div class="flex items-center gap-x-3">
-                <span class="font-semibold tracking-tight text-[21px]">Stephanie Gonzalez</span>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#111111]"></div>
+                <span class="font-semibold tracking-tight text-xl">Stephanie Gonzalez</span>
             </div>
             
             <div class="flex items-center gap-x-8 text-sm">
-                <a href="#work" class="nav-link text-[#6B635C]">Work</a>
-                <a href="#mood" class="nav-link text-[#6B635C]">Mood</a>
-                <a href="#about" class="nav-link text-[#6B635C]">About</a>
-                <a href="#ig" class="nav-link text-[#6B635C]">Instagram</a>
+                <a href="#work" class="nav-link text-[#444] hover:text-[#111]">Work</a>
+                <a href="#about" class="nav-link text-[#444] hover:text-[#111]">About</a>
+                <a href="#ig" class="nav-link text-[#444] hover:text-[#111]">Instagram</a>
+                <a href="#contact" class="nav-link text-[#444] hover:text-[#111]">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero -->
-    <div class="max-w-5xl mx-auto px-8 pt-16 pb-14">
-        <div class="max-w-2xl">
-            <div class="inline px-4 py-1 rounded-full bg-[#EDE6D9] text-[#8a7f6e] text-xs tracking-[2px] font-medium mb-6 inline-block">
-                OPEN TO SELECT ROLES
+    <div class="max-w-5xl mx-auto px-8 pt-20 pb-16">
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-x-2 px-4 py-1.5 rounded-full bg-white border border-[#EAEAEA] mb-6">
+                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                <span class="text-xs tracking-[2px] font-medium text-[#666]">OPEN TO SELECT ROLES</span>
             </div>
             
-            <h1 class="heading-serif text-[72px] leading-[1.05] tracking-[-3.5px] mb-6">
-                Content that<br>feels like culture.
+            <h1 class="heading-serif text-7xl leading-none tracking-tighter mb-4">
+                Content that<br>actually moves.
             </h1>
             
-            <p class="max-w-md text-[17px] text-[#6B635C] mt-2">
-                I build social presence and content systems for brands that want to feel inevitable, not manufactured.
+            <p class="max-w-md text-xl text-[#444] mt-6">
+                I build social presence and content systems for brands that want to feel like culture, not marketing.
             </p>
             
-            <div class="flex items-center gap-x-4 mt-9">
+            <div class="flex items-center gap-x-4 mt-10">
                 <a href="#work" 
-                   class="inline-flex items-center px-7 py-[17px] rounded-2xl bg-[#2C2522] text-white text-sm font-medium hover:bg-black transition-all active:scale-[0.985]">
+                   class="inline-flex items-center px-8 py-4 rounded-2xl bg-[#111] text-white text-sm font-medium hover:bg-black transition-colors">
                     See my work
                 </a>
                 <a href="#contact" 
-                   class="inline-flex items-center px-6 py-[17px] rounded-2xl border border-[#D4C9B5] text-sm font-medium hover:bg-white transition-colors">
-                    Get in touch
+                   class="inline-flex items-center px-6 py-4 rounded-2xl border border-[#EAEAEA] text-sm font-medium hover:bg-white transition-colors">
+                    Let's talk
                 </a>
             </div>
             
-            <div class="mt-8 text-sm text-[#8a7f6e]">
-                17.8k on Instagram • Miami
+            <div class="mt-8 flex items-center gap-x-8 text-sm text-[#666]">
+                <div>17.8k on Instagram</div>
+                <div>•</div>
+                <div>Miami based</div>
             </div>
         </div>
     </div>
 
     <!-- Work Section -->
-    <div id="work" class="max-w-5xl mx-auto px-8 pt-10 pb-20 border-t border-[#EDE6D9]">
-        <div class="flex items-end justify-between mb-9">
+    <div id="work" class="max-w-5xl mx-auto px-8 pt-12 pb-20 border-t border-[#EAEAEA]">
+        <div class="flex items-end justify-between mb-10">
             <div>
-                <div class="section-header mb-2">Selected Work</div>
-                <div class="text-5xl heading-serif tracking-[-1.5px]">Projects</div>
+                <div class="section-header text-[#666] mb-2">Selected Work</div>
+                <div class="text-4xl heading-serif tracking-tighter">Projects &amp; Direction</div>
             </div>
+            <a href="#" class="text-sm flex items-center gap-x-2 text-[#666] hover:text-[#111]">
+                View all <i class="fas fa-arrow-right text-xs"></i>
+            </a>
         </div>
         
         <div class="portfolio-grid">
             <!-- Work Item 1 -->
-            <div class="work-card bg-white rounded-3xl overflow-hidden">
-                <div class="aspect-[16/10] bg-[#F4F0E8]"></div>
-                <div class="p-7">
+            <div class="work-card bg-white border border-[#EAEAEA] rounded-3xl overflow-hidden">
+                <div class="aspect-[16/10] bg-[#F8F7F4] flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="text-[#999] text-sm tracking-widest mb-1">CAMPAIGN</div>
+                        <div class="font-semibold text-xl">The New Face of Wellness</div>
+                    </div>
+                </div>
+                <div class="p-8">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="font-semibold">The New Face of Wellness</div>
-                            <div class="text-sm text-[#8a7f6e] mt-0.5">Creative Direction + Content System</div>
+                            <div class="font-medium">Lifestyle Brand</div>
+                            <div class="text-sm text-[#666]">Creative Direction + Content System</div>
                         </div>
-                        <div class="text-xs px-3 py-1 bg-[#F4F0E8] rounded-full text-[#8a7f6e]">2025</div>
+                        <div class="text-xs px-3 py-1 bg-[#F8F7F4] rounded-full text-[#666]">2025</div>
                     </div>
                 </div>
             </div>
             
             <!-- Work Item 2 -->
-            <div class="work-card bg-white rounded-3xl overflow-hidden">
-                <div class="aspect-[16/10] bg-[#F4F0E8]"></div>
-                <div class="p-7">
+            <div class="work-card bg-white border border-[#EAEAEA] rounded-3xl overflow-hidden">
+                <div class="aspect-[16/10] bg-[#F8F7F4] flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="text-[#999] text-sm tracking-widest mb-1">ONGOING</div>
+                        <div class="font-semibold text-xl">@stephaniegonzalezxo</div>
+                    </div>
+                </div>
+                <div class="p-8">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="font-semibold">@stephaniegonzalezxo</div>
-                            <div class="text-sm text-[#8a7f6e] mt-0.5">Personal brand growth • 4k → 17.8k</div>
+                            <div class="font-medium">Personal Brand</div>
+                            <div class="text-sm text-[#666]">Growth from 4k → 17.8k in 8 months</div>
                         </div>
-                        <div class="text-xs px-3 py-1 bg-[#F4F0E8] rounded-full text-[#8a7f6e]">2025–26</div>
+                        <div class="text-xs px-3 py-1 bg-[#F8F7F4] rounded-full text-[#666]">2025–26</div>
                     </div>
                 </div>
             </div>
             
             <!-- Work Item 3 -->
-            <div class="work-card bg-white rounded-3xl overflow-hidden">
-                <div class="aspect-[16/10] bg-[#F4F0E8]"></div>
-                <div class="p-7">
+            <div class="work-card bg-white border border-[#EAEAEA] rounded-3xl overflow-hidden">
+                <div class="aspect-[16/10] bg-[#F8F7F4] flex items-center justify-center">
+                    <div class="text-center px-6">
+                        <div class="text-[#999] text-sm tracking-widest mb-1">STRATEGY</div>
+                        <div class="font-semibold text-xl">Founder Content Playbook</div>
+                    </div>
+                </div>
+                <div class="p-8">
                     <div class="flex justify-between items-start">
                         <div>
-                            <div class="font-semibold">Founder Content Playbook</div>
-                            <div class="text-sm text-[#8a7f6e] mt-0.5">Positioning + rollout strategy</div>
+                            <div class="font-medium">Tech + Wellness Founders</div>
+                            <div class="text-sm text-[#666]">Personal brand positioning + rollout</div>
                         </div>
-                        <div class="text-xs px-3 py-1 bg-[#F4F0E8] rounded-full text-[#8a7f6e]">2025</div>
+                        <div class="text-xs px-3 py-1 bg-[#F8F7F4] rounded-full text-[#666]">2025</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Mood / Pinterest Section -->
-    <div id="mood" class="max-w-5xl mx-auto px-8 py-16 border-t border-[#EDE6D9] bg-white">
-        <div class="mb-8">
-            <div class="section-header mb-2">Visual Direction</div>
-            <div class="text-4xl heading-serif tracking-tight">Things I’m drawn to</div>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="overflow-hidden rounded-2xl aspect-[4/3]">
-                <img src="https://picsum.photos/id/1011/800/600" class="mood-img w-full h-full object-cover" alt="Soft natural light interior">
-            </div>
-            <div class="overflow-hidden rounded-2xl aspect-[4/3]">
-                <img src="https://picsum.photos/id/1005/800/600" class="mood-img w-full h-full object-cover" alt="Minimal fashion flatlay">
-            </div>
-            <div class="overflow-hidden rounded-2xl aspect-[4/3]">
-                <img src="https://picsum.photos/id/106/800/600" class="mood-img w-full h-full object-cover" alt="Warm tones still life">
-            </div>
-            <div class="overflow-hidden rounded-2xl aspect-[4/3]">
-                <img src="https://picsum.photos/id/201/800/600" class="mood-img w-full h-full object-cover" alt="Editorial portrait">
-            </div>
-        </div>
-        <div class="text-xs text-[#8a7f6e] mt-4 tracking-wide">A quiet collection of references I return to</div>
-    </div>
-
     <!-- About -->
-    <div id="about" class="max-w-5xl mx-auto px-8 py-20 border-t border-[#EDE6D9]">
+    <div id="about" class="max-w-5xl mx-auto px-8 py-20 border-t border-[#EAEAEA] bg-white">
         <div class="max-w-2xl">
-            <div class="section-header mb-3">Approach</div>
-            <div class="heading-serif text-6xl tracking-[-2px] leading-none mb-8">
-                I don’t make content.<br>I make presence.
+            <div class="section-header text-[#666] mb-3">Approach</div>
+            <div class="heading-serif text-5xl tracking-tighter leading-none mb-8">
+                I don't make content.<br>I make presence.
             </div>
             
-            <div class="space-y-6 text-[15px] leading-relaxed text-[#524A42]">
-                <p>Most social media feels like it’s trying too hard. The best work disappears into culture — it feels inevitable.</p>
+            <div class="space-y-6 text-[#444] text-[15px] leading-relaxed">
+                <p>Most social media feels like it's trying too hard. I believe the best work disappears into the culture — it feels inevitable, not manufactured.</p>
                 
-                <p>My background in AI systems gives me an unusual edge: I can build repeatable processes while keeping everything deeply human and specific.</p>
+                <p>My background in AI systems gives me an edge: I understand how to build repeatable processes while keeping everything deeply human and specific.</p>
                 
                 <p>I work best with founders and brands who already have taste and want someone who can translate it into scroll-stopping execution.</p>
             </div>
@@ -210,46 +214,47 @@
     </div>
 
     <!-- Instagram -->
-    <div id="ig" class="max-w-5xl mx-auto px-8 py-14 border-t border-[#EDE6D9] bg-[#F9F6F0]">
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-y-6">
+    <div id="ig" class="max-w-5xl mx-auto px-8 py-16 border-t border-[#EAEAEA]">
+        <div class="flex items-center justify-between mb-8">
             <div>
-                <div class="section-header">Instagram</div>
-                <div class="text-4xl heading-serif tracking-tight">@stephaniegonzalezxo</div>
+                <div class="section-header text-[#666]">Instagram</div>
+                <div class="text-4xl heading-serif tracking-tighter">@stephaniegonzalezxo</div>
             </div>
             <a href="https://instagram.com/stephaniegonzalezxo" target="_blank" 
-               class="inline-flex items-center gap-x-2 text-sm border border-[#D4C9B5] px-6 py-3 rounded-2xl hover:bg-white transition-colors w-fit">
-                <span>Follow on Instagram</span> 
+               class="flex items-center gap-x-2 text-sm border border-[#EAEAEA] px-5 py-2.5 rounded-2xl hover:bg-white">
+                <span>Follow</span> 
                 <i class="fab fa-instagram"></i>
             </a>
         </div>
-        <div class="mt-4 max-w-md text-sm text-[#8a7f6e]">
+        
+        <div class="text-[#666] max-w-md">
             17.8k followers. A space for women building in public, thinking about culture, taste, and the future of work.
         </div>
     </div>
 
     <!-- Contact -->
-    <div id="contact" class="max-w-5xl mx-auto px-8 py-20 border-t border-[#EDE6D9] bg-[#2C2522] text-[#F9F6F0] rounded-t-3xl">
+    <div id="contact" class="max-w-5xl mx-auto px-8 py-20 border-t border-[#EAEAEA] bg-[#111] text-white rounded-t-3xl">
         <div class="max-w-xl">
-            <div class="section-header text-[#D4C9B5] mb-4">Next step</div>
-            <div class="heading-serif text-6xl tracking-[-1.5px]">Let’s build something that feels right.</div>
+            <div class="section-header text-white/60 mb-4">Next step</div>
+            <div class="heading-serif text-6xl tracking-tighter">Let's build something that feels right.</div>
             
             <div class="mt-10">
                 <a href="mailto:stephanie@meetcanopy.club" 
-                   class="inline-flex items-center gap-x-3 text-lg group text-[#F9F6F0]">
+                   class="inline-flex items-center gap-x-3 text-lg group">
                     <span class="group-hover:underline">stephanie@meetcanopy.club</span>
                     <i class="fas fa-arrow-right group-hover:translate-x-1 transition"></i>
                 </a>
             </div>
             
-            <div class="mt-5 text-sm text-[#D4C9B5]">
-                Currently open to senior social &amp; content roles with brands that value craft.
+            <div class="mt-6 text-sm text-white/60">
+                Currently open to senior social / content marketing roles with brands that value craft over volume.
             </div>
         </div>
     </div>
 
-    <footer class="max-w-5xl mx-auto px-8 py-9 text-xs text-[#8a7f6e]">
+    <footer class="max-w-5xl mx-auto px-8 py-8 text-xs text-[#999]">
         <div class="flex justify-between">
-            <div>© Stephanie Gonzalez 2026</div>
+            <div>© Stephanie Gonzalez 2026 • Refreshed June 2026</div>
             <div>Miami, FL</div>
         </div>
     </footer>
